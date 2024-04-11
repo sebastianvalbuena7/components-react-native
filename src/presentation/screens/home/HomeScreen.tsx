@@ -91,12 +91,12 @@ export const HomeScreen = () => {
                     <View style={{ marginTop: 30 }} />
 
                     {
-                        menuItems.map((item, index) =>
+                        uiMenuItems.map((item, index) =>
                             <MenuItem
                                 key={item.component}
                                 {...item}
                                 isFirst={index === 0}
-                                isLast={index === menuItems.length - 1}
+                                isLast={index === uiMenuItems.length - 1}
                             />
                         )
                     }
@@ -104,12 +104,12 @@ export const HomeScreen = () => {
                     <View style={{ marginTop: 30 }} />
 
                     {
-                        uiMenuItems.map((item, index) =>
+                        menuItems.map((item, index) =>
                             <MenuItem
                                 key={item.component}
                                 {...item}
                                 isFirst={index === 0}
-                                isLast={index === uiMenuItems.length - 1}
+                                isLast={index === menuItems.length - 1}
                             />
                         )
                     }
