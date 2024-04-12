@@ -68,7 +68,7 @@ const uiMenuItems = [
         icon: 'document-text-outline',
         component: 'TextInputScreen',
     },
-]
+];
 
 export const HomeScreen = () => {
     return (
