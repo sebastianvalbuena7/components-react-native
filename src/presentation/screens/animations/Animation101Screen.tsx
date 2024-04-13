@@ -1,12 +1,17 @@
 import { View, Text, StyleSheet, Pressable, Animated, Easing } from "react-native"
-import { colors } from "../../../config/theme/theme";
 import { useAnimation } from "../../hooks/useAnimation";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
+import { CustomView } from "../../components/ui/CustomView";
+import { Button } from "../../components/ui/Button";
 
 export const Animation101Screen = () => {
     const { animatedOpacity, animatedTop, fadeIn, fadeOut, startMovingTopPosition } = useAnimation();
 
+    const { colors } = useContext(ThemeContext);
+
     return (
-        <View style={styles.container}>
+        <CustomView style={styles.container}>
             <Animated.View style={[
                 styles.purpleBox,
                 {
@@ -15,33 +20,33 @@ export const Animation101Screen = () => {
                         {
                             translateY: animatedTop
                         }
-                    ]
+                    ],
+                    backgroundColor: colors.primary
                 }
             ]} />
 
             {/* Fade In */}
-            <Pressable
+            <Button
                 onPress={() => {
                     fadeIn({})
                     startMovingTopPosition({ initialPosition: -100, easing: Easing.bounce, duration: 790 })
                 }}
-                style={{
+                styles={{
                     marginTop: 10
                 }}
-            >
-                <Text>FadeIn</Text>
-            </Pressable>
+                text="FadeIn"
+            />
 
             {/* Fade Out */}
-            <Pressable
+            <Button
                 onPress={() => fadeOut({})}
-                style={{
+                styles={{
                     marginTop: 10
                 }}
-            >
-                <Text>FadeOut</Text>
-            </Pressable>
-        </View>
+                text="FadeOut"
+            />
+
+        </CustomView>
     )
 }
 
@@ -52,7 +57,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     purpleBox: {
-        backgroundColor: colors.primary,
         width: 150,
         height: 150
     }

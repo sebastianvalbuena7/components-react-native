@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View } from "react-native"
 import { Card } from "../../components/ui/Card"
 import { CustomView } from "../../components/ui/CustomView"
 import { Title } from "../../components/ui/Title"
 import { globalStyles } from "../../../config/theme/theme"
+import { ThemeContext } from "../../context/ThemeContext"
 
 export const TextInputScreen = () => {
+    const { colors } = useContext(ThemeContext);
+
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -22,7 +25,11 @@ export const TextInputScreen = () => {
 
                     <Card>
                         <TextInput
-                            style={globalStyles.input}
+                            style={[globalStyles.input, {
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }]}
+                            placeholderTextColor={colors.text}
                             placeholder="Nombre Completo"
                             autoCapitalize={'words'}
                             autoCorrect={false}
@@ -30,7 +37,11 @@ export const TextInputScreen = () => {
                         />
 
                         <TextInput
-                            style={globalStyles.input}
+                            style={[globalStyles.input, {
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }]}
+                            placeholderTextColor={colors.text}
                             placeholder="Correo"
                             keyboardType="email-address"
                             autoCorrect={false}
@@ -38,7 +49,11 @@ export const TextInputScreen = () => {
                         />
 
                         <TextInput
-                            style={globalStyles.input}
+                            style={[globalStyles.input, {
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }]}
+                            placeholderTextColor={colors.text}
                             placeholder="Telefono"
                             keyboardType="phone-pad"
                             autoCorrect={false}
@@ -49,19 +64,23 @@ export const TextInputScreen = () => {
                     <View style={{ height: 10 }} />
 
                     <Card>
-                        <Text>{JSON.stringify(form, null, 2)}</Text>
-                        <Text>{JSON.stringify(form, null, 2)}</Text>
-                        <Text>{JSON.stringify(form, null, 2)}</Text>
-                        <Text>{JSON.stringify(form, null, 2)}</Text>
-                        <Text>{JSON.stringify(form, null, 2)}</Text>
-                        <Text>{JSON.stringify(form, null, 2)}</Text>
+                        <Text style={{color: colors.text}}>{JSON.stringify(form, null, 2)}</Text>
+                        <Text style={{color: colors.text}}>{JSON.stringify(form, null, 2)}</Text>
+                        <Text style={{color: colors.text}}>{JSON.stringify(form, null, 2)}</Text>
+                        <Text style={{color: colors.text}}>{JSON.stringify(form, null, 2)}</Text>
+                        <Text style={{color: colors.text}}>{JSON.stringify(form, null, 2)}</Text>
+                        <Text style={{color: colors.text}}>{JSON.stringify(form, null, 2)}</Text>
                     </Card>
 
-                    <View style={{height: 10}}/>
+                    <View style={{ height: 10 }} />
 
                     <Card>
                         <TextInput
-                            style={globalStyles.input}
+                            style={[globalStyles.input, {
+                                borderColor: colors.text,
+                                color: colors.text,
+                            }]}
+                            placeholderTextColor={colors.text}
                             placeholder="Telefono"
                             keyboardType="phone-pad"
                             autoCorrect={false}

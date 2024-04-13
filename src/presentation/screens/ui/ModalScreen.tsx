@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Modal, Platform, View } from "react-native"
 import { CustomView } from "../../components/ui/CustomView"
 import { Title } from "../../components/ui/Title"
 import { Button } from "../../components/ui/Button"
+import { ThemeContext } from "../../context/ThemeContext"
 
 export const ModalScreen = () => {
     const [openModal, setOpenModal] = useState(false);
+
+    const { colors } = useContext(ThemeContext);
 
     return (
         <CustomView margin>
@@ -22,7 +25,7 @@ export const ModalScreen = () => {
             >
                 <View style={{
                     flex: 1,
-                    backgroundColor: 'rgba(0,0,0,0.1)'
+                    backgroundColor: colors.background
                 }}>
                     <View style={{
                         paddingHorizontal: 10

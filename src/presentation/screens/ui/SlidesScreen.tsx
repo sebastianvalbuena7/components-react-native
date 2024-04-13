@@ -1,8 +1,9 @@
 import { View, Text, ImageSourcePropType, FlatList, useWindowDimensions, Image, NativeSyntheticEvent, NativeScrollEvent } from "react-native"
-import { colors, globalStyles } from "../../../config/theme/theme";
+import { globalStyles } from "../../../config/theme/theme";
 import { Button } from "../../components/ui/Button";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { ThemeContext } from "../../context/ThemeContext";
 
 interface Slide {
     title: string;
@@ -29,6 +30,8 @@ const items: Slide[] = [
 ]
 
 export const SlidesScreen = () => {
+    const { colors } = useContext(ThemeContext);
+
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const flatListRef = useRef<FlatList>(null);
     const navigation = useNavigation();
@@ -104,13 +107,15 @@ interface SlideItemProps {
 }
 
 const SlideItem = ({ item }: SlideItemProps) => {
+    const { colors } = useContext(ThemeContext);
+
     const { width } = useWindowDimensions();
     const { desc, img, title } = item;
 
     return (
         <View style={{
             flex: 1,
-            backgroundColor: 'white',
+            backgroundColor: colors.background,
             borderRadius: 5,
             padding: 40,
             justifyContent: 'center',
